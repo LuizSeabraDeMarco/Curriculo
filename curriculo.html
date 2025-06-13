@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currículo de Luiz Seabra</title>
+  <style>
+    :root {
+      --bg: #0f0f1a;
+      --primary: #7f5af0;
+      --secondary: #f8f8f8;
+      --accent: #ff007f;
+      --text: #c7c7c7;
+      --heading: #ffffff;
+      --card-bg: #1e1e2e;
+      --badge-bg: linear-gradient(135deg, #ff007f, #7f5af0);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem;
+      animation: fadeIn 2s ease-in;
+    }
+
+    a:focus,
+    .project:focus {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    h1, h2 {
+      color: var(--heading);
+      margin-bottom: 0.5rem;
+      animation: slideDown 1s ease forwards;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      max-width: 900px;
+    }
+
+    .highlight {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .job {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(127, 90, 240, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .job:hover {
+      transform: scale(1.01);
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .project {
+      cursor: pointer;
+      padding: 1rem;
+      background: #1a1a2e;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+      background: #25253a;
+    }
+
+    .project-details {
+      display: none;
+      margin-top: 0.5rem;
+      color: var(--secondary);
+    }
+
+    .badge {
+      background: var(--badge-bg);
+      color: white;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      margin: 1rem 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 0, 127, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+    }
+  </style>
+</head>
+<body role="main">
+  <header>
+    <h1 id="nome">Luiz Filipe Seabra de Marco</h1>
+    <p><span class="highlight">Programador Jovem</span> | Volta Redonda, Brasil</p>
+    <p>Email: <a href="mailto:filipedemarco@yahoo.com.br">filipedemarco@yahoo.com.br</a> |
+       Telefone: <a href="tel:+5524999457556">+55 (24) 99945-7556</a> |
+       GitHub: <a href="https://github.com/LuizSeabraDeMarco" target="_blank" rel="noopener noreferrer">LuizSeabraDeMarco</a></p>
+
+    <a href="https://tech.seas.harvard.edu/summer#about" target="_blank" rel="noopener noreferrer" aria-label="Link para o site do programa Harvard Ventures">
+      <div class="badge">Selecionado para o Harvard Undergraduate Ventures com bolsa de 25% 🎓</div>
+    </a>
+  </header>
+
+  <section class="section" aria-labelledby="resumo">
+    <h2 id="resumo">Resumo</h2>
+    <p>Sou um programador de 17 anos apaixonado por tecnologia e inovação. Iniciei na programação aos 8 anos e desde então desenvolvi projetos com impacto real nas áreas de acessibilidade, educação, sustentabilidade e tecnologia de ponta.</p>
+  </section>
+
+  <section class="section" aria-labelledby="experiencia">
+    <h2 id="experiencia">Experiência Profissional</h2>
+    <div class="job">
+      <p><strong>Programador</strong> | Easy Voice (Startup própria) | Dez 2023 - atual</p>
+      <p>Desenvolvo um app de acessibilidade com visão computacional. Cuido do código, testes e melhorias.</p>
+    </div>
+    <div class="job">
+      <p><strong>Programador Web</strong> | ONG Ar Florecer | Jul 2023 - Set 2023</p>
+      <p>Criei um site acessível voltado para crianças autistas, com foco em usabilidade e performance.</p>
+    </div>
+    <div class="job">
+      <p><strong>Desenvolvedor Front-End</strong> | ONG PHYTO-LAB (Alemanha) | Fev 2023 - Mai 2023</p>
+      <p>Participei da criação de uma plataforma sobre a Amazônia, focando em interfaces modernas e responsivas.</p>
+    </div>
+    <div class="job">
+      <p><strong>Programador Educacional</strong> | Microlins | Dez 2022 - Mai 2023</p>
+      <p>Desenvolvi um app para ajudar estudantes a memorizar números em diversos idiomas.</p>
+    </div>
+    <div class="job">
+      <p><strong>Desenvolvedor</strong> | Clínica Médica (Freelance) | Jan 2024 - Mar 2024</p>
+      <p>Criei um sistema de agendamento médico com filtros e gestão de prontuários.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="projetos">
+    <h2 id="projetos">Projetos em Destaque</h2>
+
+    <div class="project" role="button" tabindex="0" aria-expanded="false" aria-controls="mao3d" onclick="toggleDetails('mao3d', this)" onkeypress="if(event.key==='Enter'){toggleDetails('mao3d', this);}">
+      <strong>Visualização da Mão em 3D</strong>
+      <div id="mao3d" class="project-details">Projeto com MediaPipe e Three.js para replicar os movimentos da mão em tempo real usando um personagem 3D. Focado em aplicações educacionais e acessibilidade.</div>
+    </div>
+
+    <div class="project" role="button" tabindex="0" aria-expanded="false" aria-controls="nano" onclick="toggleDetails('nano', this)" onkeypress="if(event.key==='Enter'){toggleDetails('nano', this);}">
+      <strong>
+        <a href="https://pypi.org/project/nano-wait/" target="_blank" rel="noopener noreferrer" style="color: var(--text); text-decoration: underline;">Nano-Wait</a>
+      </strong>
+      <div id="nano" class="project-details">Biblioteca Python criada para otimizar o tempo de espera em aplicações assíncronas. Código leve e eficiente, usada em diversos dos meus projetos pessoais.</div>
+    </div>
+
+    <div class="project" role="button" tabindex="0" aria-expanded="false" aria-controls="quantum" onclick="toggleDetails('quantum', this)" onkeypress="if(event.key==='Enter'){toggleDetails('quantum', this);}">
+      <strong>
+        <a href="https://github.com/LuizSeabraDeMarco/Quantum-Strings" target="_blank" rel="noopener noreferrer" style="color: var(--text); text-decoration: underline;">QuantumString</a>
+      </strong>
+      <div id="quantum" class="project-details">Projeto interativo que simula visualmente, em 3D, o comportamento da teoria das cordas usando computação gráfica e física quântica. Criado para tornar conceitos abstratos mais acessíveis e visuais.</div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="habilidades">
+    <h2 id="habilidades">Habilidades</h2>
+    <p>Python, JavaScript, PHP, SQL, HTML, CSS, C++, IA, Visão Computacional, Web, Git, APIs REST</p>
+  </section>
+
+  <section class="section" aria-labelledby="idiomas">
+    <h2 id="idiomas">Idiomas</h2>
+    <p>Português (nativo), Inglês (intermediário-avançado, DET 105 - B2/C1)</p>
+  </section>
+
+  <section class="section" aria-labelledby="interesses">
+    <h2 id="interesses">Interesses</h2>
+    <p>Inovação, IA, fotografia, teatro, basquete, soluções sociais e acessíveis</p>
+  </section>
+
+  <script>
+    function toggleDetails(id, el) {
+      const content = document.getElementById(id);
+      const isVisible = content.style.display === 'block';
+      content.style.display = isVisible ? 'none' : 'block';
+      if (el) el.setAttribute('aria-expanded', !isVisible);
+    }
+  </script>
+</body>
+</html>
