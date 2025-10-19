@@ -1,270 +1,367 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title id="pageTitle">Luiz Seabra Resume</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-pt="ConnectVoice — Versão Responsiva" data-en="ConnectVoice — Responsive Version">ConnectVoice — Versão Responsiva</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #0f0f1a;
-      --primary: #7f5af0;
-      --secondary: #f8f8f8;
-      --accent: #ff007f;
-      --text: #c7c7c7;
-      --heading: #ffffff;
-      --card-bg: #1e1e2e;
-      --badge-bg: linear-gradient(135deg, #ff007f, #7f5af0);
+    :root{
+      --brand-1: #038d8f;
+      --brand-2: #f6ab2e;
+      --bg: #f7fbf8;
+      --text: #1a1a1a;
+      --muted: #666666;
+      --card-bg: #ffffff;
+      --glass: rgba(255,255,255,0.6);
+      --max-width: 1200px;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--bg);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      padding: 2rem;
-      animation: fadeIn 2s ease-in;
+    /* Reset básico */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;padding:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-top:96px; /* espaço para header fixo em mobile */
     }
 
-    h1, h2 { color: var(--heading); margin-bottom: 0.5rem; animation: slideDown 1s ease forwards; }
-    h1 { font-size: 2.5rem; color: var(--primary); }
-    h2 { margin-top: 2rem; border-left: 5px solid var(--accent); padding-left: 10px; }
-    p { margin-bottom: 1rem; max-width: 900px; }
+    /* Header */
+    header{position:fixed;left:0;top:0;width:100%;z-index:60;background:linear-gradient(180deg,var(--brand-1) 60%, rgba(3,141,143,0.85));backdrop-filter: blur(6px);box-shadow:0 4px 18px rgba(0,0,0,0.12)}
+    .nav-inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .brand .logo-wrap{background:white;padding:6px;border-radius:9999px;display:inline-flex}
+    .brand img{width:44px;height:44px;border-radius:9999px;object-fit:cover}
+    .logo-text{font-family:'Montserrat',sans-serif;font-weight:700;color:white;font-size:1.2rem;letter-spacing:0.6px}
 
-    .highlight { color: var(--primary); font-weight: bold; }
-    .job, .project { background: var(--card-bg); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(127, 90, 240, 0.2); transition: transform 0.3s ease; }
-    .job:hover, .project:hover { transform: scale(1.01); }
-    .section { margin-bottom: 2rem; }
+    /* Nav links (desktop) */
+    .nav-links{display:none;gap:28px}
+    .nav-links a{color:white;text-decoration:none;font-weight:600}
 
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* Controls */
+    .controls{display:flex;align-items:center;gap:8px}
+    .lang-btn{border-radius:9999px;padding:6px 10px;font-weight:700;background:transparent;color:white;border:0;cursor:pointer;transition:all .25s}
+    .lang-btn.active{background:var(--brand-1);color:white}
+    .cta-button{background:var(--brand-2);color:var(--text);padding:8px 14px;border-radius:9999px;font-weight:800;text-decoration:none}
+    .login-btn{background:white;color:var(--brand-1);padding:8px 12px;border-radius:9999px;font-weight:700;text-decoration:none}
 
-    .project { cursor: pointer; transition: transform 0.3s ease, background 0.3s ease; }
-    .project:hover { background: #25253a; }
-    .project-details { display: none; margin-top: 0.5rem; color: var(--secondary); }
+    /* Mobile menu button */
+    .hamburger{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:transparent;border:0;color:white}
 
-    .badge {
-      background: var(--badge-bg);
-      color: white;
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: bold;
-      margin: 1rem 0;
-      animation: pulse 2s infinite;
+    /* Main container */
+    main{position:relative;z-index:10;max-width:var(--max-width);margin:0 auto;padding:24px}
+
+    /* Hero */
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:center}
+    .hero-title{font-size:2rem;line-height:1.05;font-weight:800;background:linear-gradient(90deg,var(--brand-1),#0b4f67);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-sub{color:#2f2f2f;font-size:1.05rem;max-width:44ch}
+
+    /* Cards grid (solution) */
+    .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+    .card{background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(18,18,18,0.06)}
+
+    /* About animation area */
+    .communication-grid-animation{position:relative;width:100%;height:300px;background:#e9f6f5;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .grid-lines{position:absolute;inset:0;background-image:linear-gradient(to right, rgba(3,141,143,0.16) 1px, transparent 1px),linear-gradient(to bottom, rgba(3,141,143,0.16) 1px, transparent 1px);background-size:20px 20px}
+    .eye-cursor{position:absolute;width:56px;height:56px;background:var(--brand-2);border-radius:10px;opacity:.9;transform:translate(-50%,-50%);animation:moveEye 6s ease-in-out infinite alternate, selectEffect 3s ease-in-out infinite}
+    .eye-cursor::after{content:'';position:absolute;inset:0;background:rgba(246,171,46,0.24);filter:blur(10px);border-radius:10px;z-index:-1}
+
+    @keyframes moveEye{
+      0%{top:18%;left:28%}
+      25%{top:66%;left:60%}
+      50%{top:30%;left:80%}
+      75%{top:82%;left:22%}
+      100%{top:18%;left:28%}
+    }
+    @keyframes selectEffect{
+      0%,40%,60%,100%{opacity:.9;transform:translate(-50%,-50%) scale(1);box-shadow:0 0 5px rgba(246,171,46,0.45)}
+      50%{opacity:1;transform:translate(-50%,-50%) scale(1.08);box-shadow:0 0 20px rgba(246,171,46,0.9);border:2px solid white}
     }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.6); } 70% { box-shadow: 0 0 0 15px rgba(255, 0, 127, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); } }
+    /* Collaborators grid */
+    .collaborators-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:16px}
+    .collab{display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px;background:#f4f7f6;border-radius:12px}
+    .collab img{width:96px;height:96px;border-radius:9999px;object-fit:cover}
 
-    .lang-toggle { position: fixed; top: 20px; right: 20px; background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; border-radius: 10px; font-weight: bold; cursor: pointer; z-index: 999; }
+    footer{padding:26px 12px;text-align:center;background:#111827;color:white;border-top:4px solid rgba(255,255,255,0.03)}
+
+    /* Partículas (otimizado) */
+    #scanner-container{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .particle{position:absolute;width:10px;height:10px;border-radius:2px;background:rgba(3,141,143,0.7);will-change:transform;opacity:.9}
+
+    /* Accessibility helper */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* ------------------------------------- */
+    /* MEDIA QUERIES */
+    /* Small tablets and up */
+    @media(min-width:640px){
+      .hero-title{font-size:2.75rem}
+      .hero-sub{font-size:1.125rem}
+      .collaborators-grid{grid-template-columns:repeat(2,1fr)}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .nav-links{display:flex}
+      .hamburger{display:none}
+    }
+
+    /* Medium (desktop) */
+    @media(min-width:900px){
+      body{padding-top:120px}
+      .nav-inner{padding:16px}
+      .hero-grid{grid-template-columns:1fr 1fr;align-items:center}
+      .cards{grid-template-columns:repeat(3,1fr)}
+      .collaborators-grid{grid-template-columns:repeat(3,1fr)}
+      .hero-title{font-size:3.75rem}
+    }
+
+    /* Large screens */
+    @media(min-width:1200px){
+      .hero-title{font-size:4.5rem}
+      main{padding:36px}
+    }
+
+    /* Mobile nav open state */
+    .mobile-menu{position:fixed;left:0;right:0;top:64px;background:linear-gradient(180deg,var(--brand-1),rgba(3,141,143,0.95));padding:12px;border-radius:0 0 12px 12px;box-shadow:0 8px 30px rgba(0,0,0,0.2);display:none;flex-direction:column;gap:12px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:white;text-decoration:none;font-weight:700}
+
+    /* Small polish */
+    .image-animation{transition:transform .35s ease,box-shadow .35s ease}
+    .image-animation:hover{transform:scale(1.03);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+
   </style>
 </head>
-<body role="main">
-  <button class="lang-toggle" id="lang-toggle-button" onclick="toggleLanguage()">PT-BR</button>
+<body>
 
-  <header>
-    <h1 id="nome">Luiz Filipe Seabra de Marco</h1>
-    <p><span class="highlight" id="role-location">Young Programmer | Volta Redonda, Brazil</span></p>
-    <p id="contact-info">Email: <a href="mailto:filipedemarco@yahoo.com.br">filipedemarco@yahoo.com.br</a> |
-       Phone: <a href="tel:+5524999457556">+55 (24) 99945-7556</a> |
-       GitHub: <a href="https://github.com/LuizSeabraDeMarco" target="_blank" rel="noopener noreferrer">LuizSeabraDeMarco</a> |
-       LinkedIn: <a href="https://www.linkedin.com/in/luizfilipeseabra/" target="_blank" rel="noopener noreferrer">luizfilipeseabra</a></p>
-    <div class="badge" id="harvard-badge">Selected for Harvard Undergraduate Ventures with 25% Scholarship 🎓</div>
-  </header>
+<a href="#main-content" class="sr-only" data-pt="Pular para o conteúdo" data-en="Skip to content">Pular para o conteúdo</a>
 
-  <section class="section" aria-labelledby="summary">
-    <h2 id="summary-heading">Summary</h2>
-    <p id="summary-content">I’m a 16-year-old developer passionate about tech and innovation. Started coding at 8 and have led impactful projects in accessibility, education, sustainability, and deep tech.</p>
-  </section>
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="#">
+      <div class="logo-wrap"><img src="img/logo.jpeg" alt="Logo ConnectVoice"></div>
+      <span class="logo-text">ConnectVoice</span>
+    </a>
 
-  <section class="section" aria-labelledby="experience">
-    <h2 id="experience-heading">Professional Experience</h2>
-    <div class="job">
-      <p><strong>Founder & Developer</strong> | Easy Voice (Startup) | Dec 2023 – Present</p>
-      <p id="easy-voice-job-desc">Easy Voice is an innovative open-source project leveraging **computer vision** to empower individuals with limited mobility. It allows users to control their computers solely through **facial movements and a simple webcam**, eliminating the need for expensive eye-tracking cameras or neural sensors. Our mission is to provide a **100% free and accessible solution**, sustained by donations and competitive events, ensuring everyone can interact with technology regardless of their financial situation.</p>
-    </div>
-    <div class="job">
-      <p><strong>Founder</strong> | EcoAção Brasil | Jan 2023 – Present</p>
-      <p id="ecoacao-brasil-job-desc">EcoAção Brasil (formerly "Comunidade EcoAção no Brasil") is an independent organization aligned with the **11th goal of the UN 2030 Agenda**, promoting sustainable cities and communities. Our mission is to use technology to solve environmental challenges and transform the relationship between humanity and the environment. Additionally, I will be teaching **AI classes** to further our mission of technological empowerment.</p>
-    </div>
-    <div class="job">
-      <p><strong>Web Developer</strong> | Ar Florecer ONG | Jul 2023 – Sep 2023</p>
-      <p id="ar-florecer-job-desc">Built an inclusive website for autistic children, focusing on accessibility and speed.</p>
-    </div>
-    <div class="job">
-      <p><strong>Frontend Developer</strong> | PHYTO-LAB (Germany) | Feb 2023 – May 2023</p>
-      <p id="phyto-lab-job-desc">Helped build a platform about the Amazon rainforest, focusing on responsive design and clarity.</p>
-    </div>
-    <div class="job">
-      <p><strong>Educational Developer</strong> | Microlins | Dec 2022 – May 2023</p>
-      <p id="microlins-job-desc">Developed a language-learning number memorization app used in local schools.</p>
-    </div>
-    <div class="job">
-      <p><strong>Freelance Developer</strong> | Medical Clinic | Jan 2024 – Mar 2024</p>
-      <p id="medical-clinic-job-desc">Built a scheduling system with medical filters and patient record integration.</p>
-    </div>
-  </section>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#sobre-nos" data-lang data-pt="Sobre Nós" data-en="About Us">Sobre Nós</a>
+      <a href="#solucao" data-lang data-pt="Nossa Solução" data-en="Our Solution">Nossa Solução</a>
+      <a href="#colaboradores" data-lang data-pt="Colaboradores" data-en="Collaborators">Colaboradores</a>
+    </nav>
 
-  <section class="section" aria-labelledby="projects">
-    <h2 id="projects-heading">Key Projects</h2>
+    <div class="controls">
+        <button class="lang-btn active" data-lang="pt" id="lang-pt" aria-pressed="true">PT</button>
+        <button class="lang-btn" data-lang="en" id="lang-en" aria-pressed="false">EN</button>
 
-    <div class="project" role="button" tabindex="0" onclick="toggleDetails('quantum-details', this)" onkeypress="if(event.key==='Enter'){toggleDetails('quantum-details', this);}">
-      <strong><a href="https://github.com/LuizSeabraDeMarco/Quantum-Strings" target="_blank" style="color: var(--text); text-decoration: underline;">QuantumString</a></strong>
-      <div id="quantum-details" class="project-details">Interactive 3D simulation of String Theory for visual education. The project is being peer-reviewed for publication in <strong>Global Teen Student</strong>.</div>
+      <a href="#" class="cta-button" data-lang data-pt="Ajude-nos" data-en="Help Us">Ajude-nos</a>
+      <a href="#" class="login-btn" data-lang data-pt="Login" data-en="Login">Login</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu" data-pt="Abrir menu" data-en="Open menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <rect width="22" height="2" rx="1" fill="white"></rect>
+          <rect y="7" width="22" height="2" rx="1" fill="white"></rect>
+          <rect y="14" width="22" height="2" rx="1" fill="white"></rect>
+        </svg>
+      </button>
     </div>
+  </div>
 
-    <div class="project" role="button" tabindex="0" onclick="toggleDetails('nano-details', this)" onkeypress="if(event.key==='Enter'){toggleDetails('nano-details', this);}">
-      <strong><a href="https://pypi.org/project/nano-wait/" target="_blank" style="color: var(--text); text-decoration: underline;">Nano-Wait</a></strong>
-      <div id="nano-details" class="project-details">A lightweight Python library to manage async wait times. Over <strong>2900 downloads</strong> and actively evolving with a growing contributor team.</div>
+  <div class="mobile-menu" id="mobile-menu" role="menu" aria-hidden="true">
+    <a href="#sobre-nos" role="menuitem" data-lang data-pt="Sobre Nós" data-en="About Us">Sobre Nós</a>
+    <a href="#solucao" role="menuitem" data-lang data-pt="Nossa Solução" data-en="Our Solution">Nossa Solução</a>
+    <a href="#colaboradores" role="menuitem" data-lang data-pt="Colaboradores" data-en="Collaborators">Colaboradores</a>
+  </div>
+</header>
+
+<div id="scanner-container"></div>
+
+<main id="main-content">
+  <section class="hero-grid">
+    <div>
+      <h1 class="hero-title" data-lang data-pt="Conectando Vidas, Dando Voz." data-en="Connecting Lives, Giving Voice.">Conectando Vidas, Dando Voz.</h1>
+      <p class="hero-sub" data-lang data-pt="Construindo um futuro onde a comunicação é um direito acessível a todos, utilizando tecnologia para empoderar e incluir." data-en="Building a future where communication is an accessible right for everyone, using technology to empower and include.">Construindo um futuro onde a comunicação é um direito acessível a todos, utilizando tecnologia para empoderar e incluir.</p>
     </div>
+    <div aria-hidden="true">
 
-    <div class="project" role="button" tabindex="0" onclick="toggleDetails('mao3d-details', this)" onkeypress="if(event.key==='Enter'){toggleDetails('mao3d-details', this);}">
-      <strong>3D Hand Tracker</strong>
-      <div id="mao3d-details" class="project-details">MediaPipe + Three.js system to replicate hand movement in 3D, aiming at educational and accessibility use.</div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="skills">
-    <h2 id="skills-heading">Skills</h2>
-    <p id="skills-content">AI, Computer Vision, Neural Networks Python, JavaScript, PHP, SQL, HTML/CSS, C++, APIs REST, Git
-</p>
+  <section id="sobre-nos" style="margin-top:28px;display:grid;grid-template-columns:1fr;gap:20px">
+    <div class="communication-grid-animation image-animation">
+      <div class="grid-lines"></div>
+      <div class="eye-cursor" aria-hidden="true"></div>
+    </div>
+
+    <div>
+      <h2 class="section-title" style="color:var(--brand-1);font-size:1.5rem;margin:8px 0" data-lang data-pt="Sobre Nós" data-en="About Us">Sobre Nós</h2>
+      <p style="color:var(--muted);line-height:1.6" data-lang data-pt="A ConnectVoice nasceu de uma ideia carregada de empatia e inovação. A inspiração veio da história de um paciente que, devido a uma condição neurológica, dependia de métodos de comunicação lentos e limitados." data-en="ConnectVoice was born from an idea full of empathy and innovation. The inspiration came from the story of a patient who, due to a neurological condition, depended on slow and limited communication methods.">A ConnectVoice nasceu de uma ideia carregada de empatia e inovação. A inspiração veio da história de um paciente que, devido a uma condição neurológica, dependia de métodos de comunicação lentos e limitados.</p>
+    </div>
   </section>
 
-  <section class="section" aria-labelledby="languages">
-    <h2 id="languages-heading">Languages</h2>
-    <p id="languages-content">Portuguese (native), English (B2/C1)</p>
+  <section id="solucao" style="margin-top:24px">
+    <h2 style="text-align:center;color:var(--brand-1);font-size:1.5rem" data-lang data-pt="Nossa Solução" data-en="Our Solution">Nossa Solução</h2>
+    <div class="cards" style="margin-top:16px">
+      <div class="card">
+        <h3 style="margin:0 0 10px 0" data-lang data-pt="Olhos e Piscar" data-en="Eyes and Blinking">Olhos e Piscar</h3>
+        <p style="margin:0;color:var(--muted)" data-lang data-pt="Com movimentos oculares precisos, o usuário controla uma grade de letras virtual, e um piscar prolongado seleciona a letra desejada." data-en="With precise eye movements, the user controls a virtual letter grid, and a prolonged blink selects the desired letter.">Com movimentos oculares precisos, o usuário controla uma grade de letras virtual, e um piscar prolongado seleciona a letra desejada.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px 0" data-lang data-pt="Movimento Facial" data-en="Facial Movement">Movimento Facial</h3>
+        <p style="margin:0;color:var(--muted)" data-lang data-pt="Nossa IA detecta e interpreta movimentos faciais sutis, permitindo atalhos personalizados." data-en="Our AI detects and interprets subtle facial movements, allowing for personalized shortcuts.">Nossa IA detecta e interpreta movimentos faciais sutis, permitindo atalhos personalizados.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px 0" data-lang data-pt="Personalização" data-en="Personalization">Personalização</h3>
+        <p style="margin:0;color:var(--muted)" data-lang data-pt="Cada usuário é único. A ConnectVoice oferece personalização, permitindo que as configurações de sensibilidade, comandos e interface sejam adaptadas para cada necessidade." data-en="Each user is unique. ConnectVoice offers personalization, allowing sensitivity settings, commands, and interface to be adapted to each need.">Cada usuário é único. A ConnectVoice oferece personalização, permitindo que as configurações de sensibilidade, comandos e interface sejam adaptadas para cada necessidade.</p>
+      </div>
+    </div>
   </section>
 
-  <section class="section" aria-labelledby="interests">
-    <h2 id="interests-heading">Interests</h2>
-    <p id="interests-content">Innovation, AI, photography, theater, basketball, and social/accessible tech</p>
+  <section id="colaboradores" style="margin-top:24px">
+    <h2 style="text-align:center;color:var(--brand-1);font-size:1.5rem" data-lang data-pt="Nossos Colaboradores" data-en="Our Collaborators">Nossos Colaboradores</h2>
+    <div class="collaborators-grid" style="margin-top:14px">
+      <div class="collab">
+        <img src="https://placehold.co/120x120/f6ab2e/1a1a1a?text=Colaborador" alt="Colaborador A">
+        <h4 data-lang data-pt="Colaborador A" data-en="Collaborator A">Colaborador A</h4>
+        <p style="color:var(--muted)" data-lang data-pt="Especialista em IA" data-en="AI Specialist">Especialista em IA</p>
+      </div>
+      <div class="collab">
+        <img src="https://placehold.co/120x120/038d8f/ffffff?text=Colaborador" alt="Colaborador B">
+        <h4 data-lang data-pt="Colaborador B" data-en="Collaborator B">Colaborador B</h4>
+        <p style="color:var(--muted)" data-lang data-pt="Designer UX/UI" data-en="UX/UI Designer">Designer UX/UI</p>
+      </div>
+      <div class="collab">
+        <img src="https://placehold.co/120x120/9ad08f/1a1a1a?text=Colaborador" alt="Colaborador C">
+        <h4 data-lang data-pt="Colaborador C" data-en="Collaborator C">Colaborador C</h4>
+        <p style="color:var(--muted)" data-lang data-pt="Engenheiro de Software" data-en="Software Engineer">Engenheiro de Software</p>
+      </div>
+    </div>
   </section>
 
-  <script>
-    // Function to toggle visibility of project details
-    function toggleDetails(id, el) {
-      const content = document.getElementById(id);
-      const isVisible = content.style.display === 'block';
-      content.style.display = isVisible ? 'none' : 'block';
-      if (el) el.setAttribute('aria-expanded', !isVisible);
+</main>
+
+<footer>
+  <div style="max-width:var(--max-width);margin:0 auto;padding:8px 18px;color:rgba(255,255,255,0.9)" data-lang data-pt="&copy; 2024 ConnectVoice. Todos os direitos reservados." data-en="&copy; 2024 ConnectVoice. All rights reserved.">&copy; 2024 ConnectVoice. Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', ()=>{
+    const open = mobileMenu.classList.toggle('open');
+    mobileMenu.setAttribute('aria-hidden', !open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Language toggle (reuse your mapping if needed)
+  const btnPt = document.getElementById('lang-pt');
+  const btnEn = document.getElementById('lang-en');
+
+  // Adiciona a lógica de troca de idioma para os botões no topo.
+  btnPt.addEventListener('click', ()=>{
+    btnPt.classList.add('active');
+    btnEn.classList.remove('active');
+    btnPt.setAttribute('aria-pressed', 'true');
+    btnEn.setAttribute('aria-pressed', 'false');
+  });
+  btnEn.addEventListener('click', ()=>{
+    btnEn.classList.add('active');
+    btnPt.classList.remove('active');
+    btnEn.setAttribute('aria-pressed', 'true');
+    btnPt.setAttribute('aria-pressed', 'false');
+  });
+
+  // Particle system optimized: use translateY + dataset for perf
+  const scannerContainer = document.getElementById('scanner-container');
+  const numParticles = Math.max(18, Math.min(40, Math.floor(window.innerWidth / 40))); // adaptive count
+  const particles = [];
+
+  for (let i=0;i<numParticles;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    const x = Math.random()*window.innerWidth;
+    const y = Math.random()*window.innerHeight;
+    p.style.transform = `translate(${x}px, ${y}px)`;
+    p.dataset.x = x;
+    p.dataset.y = y;
+    p.dataset.speed = 0.2 + Math.random()*0.9;
+    p.style.opacity = 0.6 + Math.random()*0.4;
+    scannerContainer.appendChild(p);
+    particles.push(p);
+  }
+
+  function animateParticles(){
+    for (let i=0;i<particles.length;i++){
+      const el = particles[i];
+      let y = parseFloat(el.dataset.y);
+      y += parseFloat(el.dataset.speed);
+      if (y > window.innerHeight + 20) y = -20;
+      el.dataset.y = y;
+      const x = parseFloat(el.dataset.x);
+      el.style.transform = `translate(${x}px, ${y}px)`;
     }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
 
-    // Object containing all translations for Portuguese and English
-    const translations = {
-      pt: {
-        pageTitle: "Luiz Seabra Currículo",
-        nome: "Luiz Filipe Seabra de Marco",
-        roleLocation: "Jovem Programador | Volta Redonda, Brasil",
-        contactInfo: "Email: <a href=\"mailto:filipedemarco@yahoo.com.br\">filipedemarco@yahoo.com.br</a> | Telefone: <a href=\"tel:+5524999457556\">+55 (24) 99945-7556</a> | GitHub: <a href=\"https://github.com/LuizSeabraDeMarco\" target=\"_blank\" rel=\"noopener noreferrer\">LuizSeabraDeMarco</a> | LinkedIn: <a href=\"https://www.linkedin.com/in/luizfilipeseabra/\" target=\"_blank\" rel=\"noopener noreferrer\">luizfilipeseabra</a>",
-        harvardBadge: "Selecionado para Harvard Undergraduate Ventures com Bolsa de 25% 🎓",
-        summaryHeading: "Resumo",
-        summaryContent: "Sou um desenvolvedor de 16 anos apaixonado por tecnologia e inovação. Comecei a programar aos 8 anos e liderei projetos impactantes em acessibilidade, educação, sustentabilidade e deep tech.",
-        experienceHeading: "Experiência Profissional",
-        easyVoiceJobDesc: "Criei o Easy Voice, um app gratuito que usa visão computacional para permitir que pessoas com tetraplegia se comuniquem com expressões faciais, usando apenas uma webcam comum. O MVP foi testado com um paciente tetraplégico, e agora lidero uma equipe no desenvolvimento do protótipo avançado. Nossa missão é tornar a tecnologia assistiva acessível a todos.",
-        ecoacaoBrasilJobDesc: "EcoAção Brasil (anteriormente \"Comunidade EcoAção no Brasil\") é uma organização independente alinhada com o <strong>11º objetivo da Agenda 2030 da ONU</strong>, promovendo cidades e comunidades sustentáveis. Nossa missão é usar a tecnologia para resolver desafios ambientais e transformar a relação entre a humanidade e o meio ambiente. Além disso, ministrarei **aulas de IA** para impulsionar nossa missão de empoderamento tecnológico.",
-        arFlorecerJobDesc: "Construí um website inclusivo para crianças autistas, focando em acessibilidade e velocidade.",
-        phytoLabJobDesc: "Ajudei a construir uma plataforma sobre a floresta amazônica, focando em design responsivo e clareza.",
-        microlinsJobDesc: "Desenvolvi um aplicativo de memorização de números para aprendizado de idiomas, usado em escolas locais.",
-        medicalClinicJobDesc: "Construí um sistema de agendamento com filtros médicos e integração de prontuários de pacientes.",
-        projectsHeading: "Projetos Chave",
-        quantumDetails: "Simulação 3D interativa da Teoria das Cordas para educação visual. O projeto está sendo revisado por pares para publicação no <strong>Global Teen Student</strong>.",
-        nanoDetails: "Uma biblioteca Python leve para gerenciar tempos de espera assíncronos. Mais de <strong>2900 downloads</strong> e em evolução ativa com uma equipe crescente de colaboradores.",
-        mao3dDetails: "Sistema MediaPipe + Three.js para replicar movimentos da mão em 3D, visando uso educacional e de acessibilidade.",
-        skillsHeading: "Habilidades",
-        skillsContent: "IA, Visão Computacional, Redes Neurais, Python, JavaScript, PHP, SQL, HTML/CSS, C++, APIs REST, Git",
-        languagesHeading: "Idiomas",
-        languagesContent: "Português (nativo), Inglês (B2/C1)",
-        interestsHeading: "Interesses",
-        interestsContent: "Inovação, IA, fotografia, teatro, basquete e tecnologia social/acessível"
-      },
-      en: {
-        pageTitle: "Luiz Seabra Resume",
-        nome: "Luiz Filipe Seabra de Marco",
-        roleLocation: "Young Programmer | Volta Redonda, Brazil",
-        contactInfo: "Email: <a href=\"mailto:filipedemarco@yahoo.com.br\">filipedemarco@yahoo.com.br</a> | Phone: <a href=\"tel:+5524999457556\">+55 (24) 99945-7556</a> | GitHub: <a href=\"https://github.com/LuizSeabraDeMarco\" target=\"_blank\" rel=\"noopener noreferrer\">LuizSeabraDeMarco</a> | LinkedIn: <a href=\"https://www.linkedin.com/in/luizfilipeseabra/\" target=\"_blank\" rel=\"noopener noreferrer\">luizfilipeseabra</a>",
-        harvardBadge: "Selected for Harvard Undergraduate Ventures with 25% Scholarship",
-        summaryHeading: "Summary",
-        summaryContent: "I’m a 16-year-old developer passionate about tech and innovation. Started coding at 8 and have led impactful projects in accessibility, education, sustainability, and deep tech.",
-        experienceHeading: "Professional Experience",
-        easyVoiceJobDesc: "I created Easy Voice, a free app that uses computer vision to help people with tetraplegia communicate through facial expressions using only a simple webcam. The MVP was tested with a tetraplegic patient, and I now lead a team building an advanced prototype. Our mission is to make assistive tech accessible for everyone.",
-        ecoacaoBrasilJobDesc: "EcoAção Brasil (formerly \"Comunidade EcoAção no Brasil\") is an independent organization aligned with the <strong>11th goal of the UN 2030 Agenda</strong>, promoting sustainable cities and communities. Our mission is to use technology to solve environmental challenges and transform the relationship between humanity and the environment. Additionally, I will be teaching **AI classes** to further our mission of technological empowerment.",
-        arFlorecerJobDesc: "Built an inclusive website for autistic children, focusing on accessibility and speed.",
-        phytoLabJobDesc: "Helped build a platform about the Amazon rainforest, focusing on responsive design and clarity.",
-        microlinsJobDesc: "Developed a language-learning number memorization app used in local schools.",
-        medicalClinicJobDesc: "Built a scheduling system with medical filters and patient record integration.",
-        projectsHeading: "Key Projects",
-        quantumDetails: "Interactive 3D simulation of String Theory for visual education. The project is being peer-reviewed for publication in <strong>Global Teen Student</strong>.",
-        nanoDetails: "A lightweight Python library to manage async wait times. Over <strong>2900 downloads</strong> and actively evolving with a growing contributor team.",
-        mao3dDetails: "MediaPipe + Three.js system to replicate hand movement in 3D, aiming at educational and accessibility use.",
-        skillsHeading: "Skills",
-        skillsContent: "AI, Computer Vision, Neural Networks, Python, JavaScript, PHP, SQL, HTML/CSS, C++, APIs REST, Git",
-        languagesHeading: "Languages",
-        languagesContent: "Portuguese (native), English (B2/C1)",
-        interestsHeading: "Interests",
-        interestsContent: "Innovation, AI, photography, theater, basketball, and social/accessible tech"
+  // Recalculate on resize
+  window.addEventListener('resize', ()=>{
+    particles.forEach(p=>{ p.dataset.x = Math.random()*window.innerWidth; });
+  });
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const langBtns = document.querySelectorAll(".lang-btn");
+  // O seletor agora busca por elementos que tenham APENAS o atributo data-lang
+  const langElements = document.querySelectorAll("[data-lang]:not(.lang-btn)"); 
+  // O título (<title>) também precisa ser atualizado, mas não está no corpo, vamos selecioná-lo separadamente
+  const docTitle = document.querySelector('title');
+
+  const updateLanguage = (selectedLang) => {
+      // 1. Atualiza os botões ativos
+      langBtns.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute('aria-pressed', 'false');
+          if (b.dataset.lang === selectedLang) {
+              b.classList.add("active");
+              b.setAttribute('aria-pressed', 'true');
+          }
+      });
+      
+      // 2. Atualiza textos do corpo
+      langElements.forEach(el => {
+          // Usa o atributo [data-pt] ou [data-en] correspondente.
+          const translation = el.dataset[selectedLang];
+          if (translation) el.textContent = translation;
+      });
+
+      // 3. Atualiza o título do documento
+      if (docTitle) {
+          const titleTranslation = docTitle.dataset[selectedLang];
+          if (titleTranslation) docTitle.textContent = titleTranslation;
       }
-    };
 
-    let currentLang = "en"; // Tracks the *currently displayed* language
+      // 4. Salva preferência no localStorage
+      localStorage.setItem("lang", selectedLang);
+      
+      // Opcional: atualiza o atributo 'lang' do HTML
+      document.documentElement.setAttribute('lang', selectedLang === 'pt' ? 'pt-br' : 'en');
+  };
 
-    /**
-     * Toggles the display language between English and Portuguese.
-     * Updates all relevant text elements on the page based on the current language.
-     */
-    function toggleLanguage() {
-        // Determine the *new* language
-        const newLang = currentLang === "en" ? "pt" : "en";
-        const langData = translations[newLang];
-
-        // Update all elements with corresponding IDs
-        document.getElementById("pageTitle").innerText = langData.pageTitle;
-        document.getElementById("nome").innerText = langData.nome;
-        document.getElementById("role-location").innerText = langData.roleLocation;
-        document.getElementById("contact-info").innerHTML = langData.contactInfo; // Use innerHTML for links
-        document.getElementById("harvard-badge").innerText = langData.harvardBadge;
-
-        document.getElementById("summary-heading").innerText = langData.summaryHeading;
-        document.getElementById("summary-content").innerHTML = langData.summaryContent; // Use innerHTML for bold tags
-
-        document.getElementById("experience-heading").innerText = langData.experienceHeading;
-        document.getElementById("easy-voice-job-desc").innerHTML = langData.easyVoiceJobDesc; // Use innerHTML for bold tags
-        document.getElementById("ecoacao-brasil-job-desc").innerHTML = langData.ecoacaoBrasilJobDesc; // Use innerHTML for bold tags
-        document.getElementById("ar-florecer-job-desc").innerHTML = langData.arFlorecerJobDesc;
-        document.getElementById("phyto-lab-job-desc").innerHTML = langData.phytoLabJobDesc;
-        document.getElementById("microlins-job-desc").innerHTML = langData.microlinsJobDesc;
-        document.getElementById("medical-clinic-job-desc").innerHTML = langData.medicalClinicJobDesc;
-
-        document.getElementById("projects-heading").innerText = langData.projectsHeading;
-        document.getElementById("quantum-details").innerHTML = langData.quantumDetails; // Use innerHTML for bold tags
-        document.getElementById("nano-details").innerHTML = langData.nanoDetails; // Use innerHTML for bold tags
-        document.getElementById("mao3d-details").innerHTML = langData.mao3dDetails;
-
-        document.getElementById("skills-heading").innerText = langData.skillsHeading;
-        document.getElementById("skills-content").innerText = langData.skillsContent;
-
-        document.getElementById("languages-heading").innerText = langData.languagesHeading;
-        document.getElementById("languages-content").innerText = langData.languagesContent;
-
-        document.getElementById("interests-heading").innerText = langData.interestsHeading;
-        document.getElementById("interests-content").innerText = langData.interestsContent;
-
-        // Update button text
-        document.getElementById("lang-toggle-button").innerText = newLang === "en" ? "PT-BR" : "EN";
-
-        // Update current language tracker
-        currentLang = newLang;
-    }
-
-    // Initial call on DOMContentLoaded to set the default language (English)
-    document.addEventListener('DOMContentLoaded', () => {
-        // Set currentLang to 'pt' so the first call to toggleLanguage switches it to 'en'
-        // and displays English content initially, which is the default for the provided HTML.
-        currentLang = "pt";
-        toggleLanguage();
+  langBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const selectedLang = btn.dataset.lang;
+      updateLanguage(selectedLang);
     });
-  </script>
+  });
+
+  // Restaura idioma salvo ou define 'pt' como padrão.
+  const savedLang = localStorage.getItem("lang") || "pt";
+  updateLanguage(savedLang); // Chama a função diretamente ao carregar
+});
+</script>
+
 </body>
 </html>
